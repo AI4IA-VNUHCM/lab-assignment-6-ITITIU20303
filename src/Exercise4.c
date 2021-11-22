@@ -16,21 +16,28 @@ Ex:
 void Ex4(char *str){
 	//Your codes here
 	
-	int i=0,j;
+	int i;
     int n = strlen(str);
-    for(i=0;i<n;i++)
-     if(str[i]==' ')
-      {
-        j=i;
-           while(j<n-1)
-           {
-            str[j] = str[j+1];
-            j++;
-           }
-        n--;
-        i--;
-      }
-      str[n]='\0';
+    for(i = 0; i < n; i++){ 
+        if(str[i] == ' '){
+            int nBegin = i;
+ 
+            if(str[i + 1] == ' '){
+                nBegin = i + 1;
+            }
+ 
+            if(str[i + 1] == ' ' || i == 0 || i == n - 2){
+                for(int j = nBegin; j < n - 1; j++){
+                    char cTemp = str[j];
+                    str[j] = str[j + 1];
+                    str[j + 1] = cTemp;
+                }
+                i--;
+                n--;
+            }
+        }
+    }
+    str[n] = '\0';
     printf("%s ",str);
 }
 
