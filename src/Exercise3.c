@@ -16,43 +16,37 @@ Ex:
 void Ex3(char *str){
 	//Your codes here
 
-	char input[100] = "";
-    char word[20] = "";
-    char longest[20] = "";
-    char shortest[20] = "";
-
-	int wordindex = 0;
-	fgets(input, sizeof(input), stdin);
-
-	for (int inputindex = 0; inputindex < strlen(input); inputindex++){
-        while (inputindex < strlen(input)&&!isspace(input[inputindex])&&isalnum(input[inputindex])) 
-		{   
-    	word[wordindex++]=input[inputindex++];
+	int i = 0, j = 0, flg = 0;
+	char word[50], mx[50], mn[50], c;
+    str[i - 1] = '\0';
+    for (i = 0; i < strlen(str); i++)
+    {
+        while (i < strlen(str) && str[i] != ' ')
+        {
+            word[j++] = str[i++];
         }
-        if (wordindex != 0)
+        if (j != 0)
         {
-    	word[wordindex] = '\0';
-
-		if (strlen(longest) == 0)
-        {
-        strcpy(longest, word);
-    	}
-        if (strlen(shortest) == 0)
-        {
-        strcpy(shortest, word);
+            word[j] = '\0';
+            if (!flg)
+            {
+                flg = !flg;
+                strcpy(mx, word);
+                strcpy(mn, word);
+            }
+            if (strlen(word) > strlen(mx))
+            {
+                strcpy(mx, word);
+            }
+            if (strlen(word) < strlen(mn))
+            {
+                strcpy(mn, word);
+            }
+            j = 0;
         }
-        if (strlen(word) > strlen(longest))
-        {
-        strcpy(longest, word);
-        }
-        if (strlen(word) < strlen(shortest))
-        {
-        strcpy(shortest, word);
-        }
-        wordindex = 0;
     }
-    printf ("Longest word: '%s'", longest);
-    printf ("\nShortest word: '%s'", shortest);
+    printf("Shortest word: %s",mn);
+	printf("\nLongest word: %s",mx);
 }
 
 int main(int argc, char *argv[]) {

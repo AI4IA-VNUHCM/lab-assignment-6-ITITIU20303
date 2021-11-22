@@ -39,6 +39,7 @@ void Ex4(char *str){
     }
     str[n] = '\0';
     printf("%s ",str);
+
 }
 
 int main(int argc, char *argv[]) {
