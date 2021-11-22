@@ -15,7 +15,9 @@ Ex:
 
 void Ex3(char *str){
 	//Your codes here
+
 	
+   
 }
 
 int main(int argc, char *argv[]) {
